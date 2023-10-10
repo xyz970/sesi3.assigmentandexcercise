@@ -38,7 +38,7 @@ class PostController extends Controller
     {
         //Ambil input judul dan isi
         $input = $request->only(['judul','isi']);
-        $request->validate([
+        $this->validate($request,[
             'judul'=>'required',
             'isi'=>'required'
         ]);
@@ -79,7 +79,7 @@ class PostController extends Controller
     public function update(Request $request,$id)
     {
         $input = $request->only(['judul','isi']);
-        $request->validate([
+        $this->validate($request,[
             'judul'=>'required',
             'isi'=>'required'
         ]);
