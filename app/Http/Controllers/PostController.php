@@ -11,11 +11,12 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
-        //
+        $post = Post::all();
+        return view('post.index',compact('post'));
     }
 
     /**
@@ -87,6 +88,7 @@ class PostController extends Controller
         $post->judul = $input['judul'];
         $post->isi = $input['isi'];
         $post->update();
+        return redirect()->to('dashboard');
         /**
          * Cara yang lain
          * note: Cara dibawah sebenarnya langsung bisa dimasukkan var $input
@@ -97,8 +99,7 @@ class PostController extends Controller
 //            'isi'=>$input['isi'],
 //        ]);
 //        $post->update();
-
-        return redirect()->to('dashboard');
+//        return redirect()->to('dashboard');
     }
 
     /**
